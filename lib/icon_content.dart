@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-const labelTextStyle = TextStyle(fontSize: 18.0, color: Color(0xFF8D8E98));
+import 'package:bmicalculator_app/constants.dart';
 
 class Cardvalues extends StatelessWidget {
   Cardvalues({@required this.icon, @required this.text});
@@ -21,7 +20,7 @@ class Cardvalues extends StatelessWidget {
         ),
         Text(
           text,
-          style: labelTextStyle,
+          style: klabelTextStyle,
         ),
       ],
     );
