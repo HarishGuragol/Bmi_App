@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:seva_app/icon_content.dart';
-import 'package:seva_app/reusable_card.dart';
+import 'package:bmicalculator_app/icon_content.dart';
+import 'package:bmicalculator_app/reusable_card.dart';
 
 const BottomContainerHeight = 75.0;
 const Card_color = Color(0xFF1D1E33);
