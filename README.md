@@ -1,4 +1,4 @@
-# seva_app
+# BMI_Calculator_App
 
 A new Flutter project.
 
