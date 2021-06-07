@@ -1,9 +1,12 @@
-import 'package:bmicalculator_app/results_page.dart';
+import 'package:bmicalculator_app/screens/results_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:bmicalculator_app/icon_content.dart';
-import 'package:bmicalculator_app/reusable_card.dart';
+import 'package:bmicalculator_app/components/icon_content.dart';
+import 'package:bmicalculator_app/components/reusable_card.dart';
 import 'package:bmicalculator_app/constants.dart';
+import 'package:bmicalculator_app/components/bottom_button.dart';
+import 'package:bmicalculator_app/components/round_icon.dart';
+import 'package:bmicalculator_app/screens/calculator_brain.dart';
 
 enum Gender {
   male,
@@ -28,6 +31,7 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text('BMI CALCULATOR'),
       ),
       body: Column(
@@ -210,57 +214,28 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          GestureDetector(
+          Bottombuttom(
+            buttonTitle: 'CALCULATE BMI',
             onTap: () {
+              CalculatorBrain cal =
+                  CalculatorBrain(height: height, weight: weight);
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return ResultsPage();
+                    return ResultsPage(
+                      bmiResult: cal.calculateBMI(),
+                      resultText: cal.getResult(),
+                      interpretation: cal.getInterpretation(),
+                    );
                   },
                 ),
               );
             },
-            child: Container(
-              color: kbottomcontainercolor,
-              margin: EdgeInsets.only(top: 10.0),
-              width: double.infinity,
-              height: kBottomContainerHeight,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'CALCULATE BMI',
-                    style: klabelTextStyle,
-                  ),
-                ],
-              ),
-            ),
           ),
         ],
       ),
-    );
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  RoundIconButton({@required this.icon, @required this.onPressed});
-
-  final IconData icon;
-  final Function onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      child: Icon(icon),
-      onPressed: onPressed,
-      elevation: 6.0,
-      constraints: BoxConstraints.tightFor(
-        width: 56.0,
-        height: 56.0,
-      ),
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
     );
   }
 }
